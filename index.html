@@ -79,7 +79,7 @@ body{
     color: rgba(255, 220, 255, 0.6);
     cursor: pointer;
 }
-.input-group__input {
+.input-group__input, #ans {
     color: #fff;
     font-size: 1.25rem;
     line-height: 1;
@@ -96,14 +96,14 @@ body{
     background-size: 200% 100%;
     transition: background-position 0.8s ease-out;
 }
-.input-group__input:hover {
+.input-group__input:hover, #ans{
     background-position: 100% 0;
 }
 .input-group__input:focus {
     outline: 2px dashed #ad2b89;
     outline-offset: 0.5em;
 }
-#result{
+#result, #ans{
     color:white;
 }
 #myInput{
@@ -112,6 +112,7 @@ body{
 </style>
 <body>
         <div class="container">
+            <h1 id="ans"></h1>
               <input type="text" id="myInput" class="input-group__input" placeholder="Write here"></textarea>
                 <div id="result"></div>
         </div>
@@ -121,7 +122,8 @@ body{
             if(e.keyCode = 13){
                 fetch('https://api.npoint.io/cff3935a74cac78905a8/' + document.getElementById("myInput").value)
                       .then((response) => response.json())
-                      .then((data) => document.getElementById("myInput").value = data);
+                      .then((data) => document.getElementById("h1").innerHTML = JSON.stringify(data));
+                        document.getElementById("myInput").value = "";
             }
         }
         document.getElementById("myInput").addEventListener("keyup", keys)

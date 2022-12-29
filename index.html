@@ -124,6 +124,7 @@ body{
             if(e.keyCode = 13){
                 if(m == "pass" && document.getElementById("myInput").value == t){
                   m = "code";
+                    document.getElementById("myInput").setAttribute("placeholder","Write 'element'/'variable', or only 'element'")
                 }
                 else if(m == "code"){
                   fetch('https://api.npoint.io/cff3935a74cac78905a8/' + document.getElementById("myInput").value)
